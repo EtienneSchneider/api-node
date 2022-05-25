@@ -14,7 +14,7 @@ router.post('/register', async (req,res)=>{
     const emailExist = await User.findOne({email: req.body.email});
 
     if(emailExist) return res.status(400).send('Email already exists');
-
+            
 
     //Hash the password
     const salt = await bcrypt.genSalt(10)
@@ -51,8 +51,8 @@ router.post('/login',async (req, res) =>{
 
      //Create and assign a token
      const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET);
-     res.header('auth-token',token).send(token);
-
+     res.header('auth-token',token).send({user: user._id, token});
+     
 
     //  res.send("You are connected")
 }); 

@@ -8,7 +8,7 @@ app.use(cors());
 
 //Import Routes
 const authRoute = require('./routes/auth');
-const postRoute = require('./routes/post');
+const infosRoute = require('./routes/infos');
 
 dotenv.config();
 // Connect to db
@@ -24,5 +24,5 @@ app.use(express.json());
 
 //Route Middlewares
 app.use('/api/user', authRoute);
-app.use('/api/posts', postRoute);
+app.use('/api/infos', infosRoute);
 app.listen("3000", ()=> console.log("Server écoutant sur le port 3000"));
